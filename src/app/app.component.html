@@ -1,0 +1,33 @@
+<div class="container">
+<div class="row">
+<div class="col-xs-12">
+  <button class="btn btn-primary" (click)="getData()">Get Data</button>
+  <button *ngIf ="!showCheckOut" class="btn btn-primary" (click)="addToCart()">Add to cart ({{totalCount}})</button>
+  <button *ngIf ="showCheckOut"class="btn btn-primary" (click)="checkOut()">Place Order</button>
+</div>
+</div>
+<br>
+<div class="row">
+  <div class="col-xs-12">
+    <h1 *ngIf='orderPlaced'>Order Placed Successfully!</h1>
+    <table *ngIf='!orderPlaced'class="table table-bordered">
+      <thead>
+        <tr>
+          <th>Id</th>
+          <th>Title</th>
+          <th>Add Items</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr *ngFor="let item of newUsers; let i =index">
+          <td>{{item.id}}</td>
+          <td>{{item.title}}</td>
+          <td><div  class="increment" (click)="getIncrement(i)">+</div>
+            <div *ngIf="item.count > 0" class="count">{{item.count}}</div>
+            <div *ngIf="item.count >=1" class="decrement" (click)="getDecrement(i)">-</div></td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+</div>
+</div>
